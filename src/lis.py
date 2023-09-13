@@ -33,6 +33,7 @@ def substring_length(substring: tuple[int, int]) -> int:
     return substring[1] - substring[0]
 
 
+
 def longest_increasing_substring(x: Sequence[Any]) -> tuple[int, int]:
     """
     Locate the (leftmost) longest increasing substring.
@@ -48,5 +49,15 @@ def longest_increasing_substring(x: Sequence[Any]) -> tuple[int, int]:
     """
     # The leftmost empty string is our first best bet
     best = (0, 0)
-    # FIXME: explore the other possibilities
+    current = (0, 0)  # Initialize the current substring as an empty string
+
+    for i in range(len(x)+1):
+        for j in range(i,len(x)+1):
+            if is_increasing(x[i:j]):
+                current = (i,j)
+            if substring_length(current) > substring_length(best):
+                best = current
+    
     return best
+
+print(longest_increasing_substring('ababc'))
