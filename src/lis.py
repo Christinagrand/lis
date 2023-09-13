@@ -59,5 +59,3 @@ def longest_increasing_substring(x: Sequence[Any]) -> tuple[int, int]:
                 best = current
     
     return best
-
-print(longest_increasing_substring('ababc'))
